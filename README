@@ -2,6 +2,19 @@ dwm - dynamic window manager
 ============================
 dwm is an extremely fast, small, and dynamic window manager for X.
 
+My modifications
+----------------
+Modifications/Patches added by me
+
+Patches
+-------
+
+> Handling key input with keycodes instead of keysyms to avoid keyboard
+layout problems.
+
+dwm-keycodes-20170511-ceac8c9.diff
+
+
 
 Requirements
 ------------
