@@ -97,6 +97,7 @@ static Key keys[] = {
 	{ MODKEY,               32,    setlayout,      {.v = &layouts[6]} },    // o
 	{ MODKEY,               65,    setlayout,      {0} },                   // space
 	{ MODKEY|ShiftMask,     65,    togglefloating, {0} },                   // space
+	{ MODKEY|ShiftMask,     41,    togglefullscr,  {0} },                   // f
 	{ MODKEY,               39,    togglesticky,   {0} },                   // s
 	{ MODKEY,               19,    view,           {.ui = ~0 } },           // 0
 	{ MODKEY|ShiftMask,     19,    tag,            {.ui = ~0 } },           // 0
