@@ -2,6 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int gappx     = 6;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -96,7 +97,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     27,    setlayout,      {.v = &layouts[4]} },    // r
 	{ MODKEY,               30,    setlayout,      {.v = &layouts[5]} },    // u
 	{ MODKEY,               32,    setlayout,      {.v = &layouts[6]} },    // o
-	{ MODKEY,               54,    setlayout,      {.v = &layouts[3]} },    // c
+	{ MODKEY,               54,    setlayout,      {.v = &layouts[7]} },    // c
 	{ MODKEY,               65,    setlayout,      {0} },                   // space
 	{ MODKEY|ShiftMask,     65,    togglefloating, {0} },                   // space
 	{ MODKEY|ShiftMask,     41,    togglefullscr,  {0} },                   // f
