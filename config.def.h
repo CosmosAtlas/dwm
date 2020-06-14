@@ -44,6 +44,8 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 #include "fibonacci.c"
 #include "tcl.c"
+#define FORCE_VSPLIT 1
+#include "nrowgrid.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
@@ -55,6 +57,7 @@ static const Layout layouts[] = {
 	{ "===",      bstackhoriz },
 	{ "[D]",      deck },
     { "|||",      tcl },
+	{ "###",      nrowgrid },
 };
 
 /* key definitions */
@@ -101,6 +104,7 @@ static Key keys[] = {
 	{ MODKEY,               32,    setlayout,      {.v = &layouts[6]} },    // o
 	{ MODKEY,               54,    setlayout,      {.v = &layouts[7]} },    // c
 	{ MODKEY|ShiftMask,     28,    setlayout,      {.v = &layouts[8]} },    // t
+	{ MODKEY,               42,    setlayout,      {.v = &layouts[9]} },    // g
 	{ MODKEY,               65,    setlayout,      {0} },                   // space
 	{ MODKEY|ShiftMask,     65,    togglefloating, {0} },                   // space
 	{ MODKEY|ShiftMask,     41,    togglefullscr,  {0} },                   // f
