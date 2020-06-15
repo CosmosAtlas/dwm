@@ -79,10 +79,6 @@ static const char *termcmd[]  = { "st", NULL };
 /*First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", NULL}; 
 
-/* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
-static char *statuscmds[] = { "notify-send Mouse$BUTTON" };
-static char *statuscmd[] = { "/bin/sh", "-c", NULL, NULL };
-
 static Key keys[] = {
 	/* modifier             key    function        argument */
 	{ MODKEY,               33,    spawn,          {.v = dmenucmd } },      // p
@@ -135,18 +131,21 @@ static Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button1,        spawn,          {.v = statuscmd } },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = statuscmd } },
-	{ ClkStatusText,        0,              Button3,        spawn,          {.v = statuscmd } },
-	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	{ ClkLtSymbol,          0,              Button1,        setlayout,      { 0} },
+	{ ClkLtSymbol,          0,              Button3,        setlayout,      { .v = &layouts[2]} },
+	{ ClkWinTitle,          0,              Button2,        zoom,           { 0} },
+	{ ClkStatusText,        0,              Button1,        sigdwmblocks,   { .i = 1} },
+	{ ClkStatusText,        0,              Button2,        sigdwmblocks,   { .i = 2} },
+	{ ClkStatusText,        0,              Button3,        sigdwmblocks,   { .i = 3} },
+	{ ClkStatusText,        0,              Button4,        sigdwmblocks,   { .i = 4} },
+	{ ClkStatusText,        0,              Button5,        sigdwmblocks,   { .i = 5} },
+	{ ClkStatusText,        ShiftMask,      Button1,        sigdwmblocks,   { .i = 6} },
+	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      { 0} },
+	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, { 0} },
+	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    { 0} },
+	{ ClkTagBar,            0,              Button1,        view,           { 0} },
+	{ ClkTagBar,            0,              Button3,        toggleview,     { 0} },
+	{ ClkTagBar,            MODKEY,         Button1,        tag,            { 0} },
+	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      { 0} },
 };
 
