@@ -51,6 +51,7 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 #include "tcl.c"
 #define FORCE_VSPLIT 1
 #include "nrowgrid.c"
+#include "layouts.c"
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -59,7 +60,8 @@ static const Layout layouts[] = {
 	{ "",      tile },
 	{ "",      bstackhoriz },
     { "|||",      tcl },
-	{ "",      nrowgrid },
+	{ "HHH",      grid },
+	/* { "",      nrowgrid }, */
 	/* { "",      monocle }, */
 	/* { "",      spiral }, */ 
 	/* { "",     dwindle }, */
