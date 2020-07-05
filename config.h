@@ -91,7 +91,8 @@ static Key keys[] = {
 	/* modifier             key    function        argument */
 	/* { MODKEY,               65,    spawn,          {.v = dmenucmd } },      // Space */
 	{ MODKEY,               65,    spawn,          SHCMD("rofi -show drun") }, // Space
-	{ MODKEY|ShiftMask,     46,    spawn,          SHCMD("lockscreen.sh") }, // l
+	{ MODKEY|ShiftMask,     46,    spawn,          SHCMD("lockscreen.sh") },   // l
+	{ MODKEY,               27,    spawn,          {.v = dmenucmd } },           // r
 	{ MODKEY,               36,    spawn,          {.v = termcmd } },          // Return
 	{ MODKEY,               49,    togglescratch,  {.v = scratchpadcmd } },    // grave
 	{ MODKEY,               56,    togglebar,      {0} },                      // b
