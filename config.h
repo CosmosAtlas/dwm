@@ -55,7 +55,7 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[D]",    deck },
+	{ "[D]",    deck },  // t, f, t, u, m, g
 	{ "",      NULL },    /* no layout function means floating behavior */
 	{ "",      tile },
 	{ "",      bstackhoriz },
@@ -90,48 +90,7 @@ static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", NULL};
 static Key keys[] = {
 	/* modifier             key    function        argument */
 	/* { MODKEY,               65,    spawn,          {.v = dmenucmd } },      // Space */
-	{ MODKEY,               65,    spawn,          SHCMD("rofi -show drun") }, // Space
-	{ MODKEY|ShiftMask,     46,    spawn,          SHCMD("lockscreen.sh") },   // l
-	{ MODKEY,               27,    spawn,          {.v = dmenucmd } },           // r
-	{ MODKEY,               36,    spawn,          {.v = termcmd } },          // Return
 	{ MODKEY,               49,    togglescratch,  {.v = scratchpadcmd } },    // grave
-	{ MODKEY,               56,    togglebar,      {0} },                      // b
-	{ MODKEY,               44,    focusstack,     {.i = +1 } },               // j
-	{ MODKEY,               45,    focusstack,     {.i = -1 } },               // k
-	{ MODKEY,               31,    incnmaster,     {.i = +1 } },               // i
-	{ MODKEY,               40,    incnmaster,     {.i = -1 } },               // d
-	{ MODKEY,               43,    setmfact,       {.f = -0.05} },             // h
-	{ MODKEY,               46,    setmfact,       {.f = +0.05} },             // l
-	{ MODKEY|ShiftMask,     36,    zoom,           {0} },                      // Return
-	{ MODKEY,               23,    view,           {0} },                      // Tab
-	{ MODKEY|ShiftMask,     54,    killclient,     {0} },                      // c
-	{ MODKEY,               28,    setlayout,      {.v = &layouts[0]} },       // t
-	{ MODKEY,               41,    setlayout,      {.v = &layouts[1]} },       // f
-	{ MODKEY|ShiftMask,     28,    setlayout,      {.v = &layouts[2]} },       // t
-	{ MODKEY,               30,    setlayout,      {.v = &layouts[3]} },       // u
-	{ MODKEY,               58,    setlayout,      {.v = &layouts[4]} },       // m
-	{ MODKEY,               42,    setlayout,      {.v = &layouts[5]} },       // g
-	/* { MODKEY,               65,    setlayout,      {0} },                   // space */
-	{ MODKEY|ShiftMask,     65,    togglefloating, {0} },                      // space
-	{ MODKEY|ShiftMask,     41,    togglefullscr,  {0} },                      // f
-	{ MODKEY,               39,    togglesticky,   {0} },                      // s
-	{ MODKEY,               19,    view,           {.ui = ~0 } },              // 0
-	{ MODKEY|ShiftMask,     19,    tag,            {.ui = ~0 } },              // 0
-	{ MODKEY,               59,    focusmon,       {.i = -1 } },               // comma
-	{ MODKEY,               60,    focusmon,       {.i = +1 } },               // period
-	{ MODKEY|ShiftMask,     59,    tagmon,         {.i = -1 } },               // comma
-	{ MODKEY|ShiftMask,     60,    tagmon,         {.i = +1 } },               // period
-	TAGKEYS(                10,                    0)                          // 1
-	TAGKEYS(                11,                    1)                          // 2
-	TAGKEYS(                12,                    2)                          // 3
-	TAGKEYS(                13,                    3)                          // 4
-	TAGKEYS(                14,                    4)                          // 5
-	TAGKEYS(                15,                    5)                          // 6
-	TAGKEYS(                16,                    6)                          // 7
-	TAGKEYS(                17,                    7)                          // 8
-	TAGKEYS(                18,                    8)                          // 9
-	{ MODKEY|ShiftMask,     24,    quit,           {0} },                      // q
-	{ MODKEY|ControlMask|ShiftMask, 24, quit,      {1} },                      // q
 };
 
 /* button definitions */
@@ -156,3 +115,74 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      { 0} },
 };
 
+
+void
+setlayoutex(const Arg *arg)
+{
+	setlayout(&((Arg) { .v = &layouts[arg->i] }));
+}
+
+void
+viewex(const Arg *arg)
+{
+	view(&((Arg) { .ui = 1 << arg->ui }));
+}
+
+void
+viewall(const Arg *arg)
+{
+	view(&((Arg){.ui = ~0}));
+}
+
+void
+toggleviewex(const Arg *arg)
+{
+	toggleview(&((Arg) { .ui = 1 << arg->ui }));
+}
+
+void
+tagex(const Arg *arg)
+{
+	tag(&((Arg) { .ui = 1 << arg->ui }));
+}
+
+void
+toggletagex(const Arg *arg)
+{
+	toggletag(&((Arg) { .ui = 1 << arg->ui }));
+}
+
+void
+tagall(const Arg *arg)
+{
+	tag(&((Arg){.ui = ~0}));
+}
+
+/* signal definitions */
+/* signum must be greater than 0 */
+/* trigger signals using `xsetroot -name "fsignal:<signame> [<type> <value>]"` */
+static Signal signals[] = {
+	/* signum           function */
+	{ "focusstack",     focusstack },
+	{ "setmfact",       setmfact },
+	{ "togglebar",      togglebar },
+	{ "incnmaster",     incnmaster },
+	{ "togglefloating", togglefloating },
+	{ "focusmon",       focusmon },
+	{ "tagmon",         tagmon },
+	{ "zoom",           zoom },
+	{ "view",           view },
+	{ "viewall",        viewall },
+	{ "viewex",         viewex },
+	{ "toggleview",     view },
+	{ "toggleviewex",   toggleviewex },
+	{ "tag",            tag },
+	{ "tagall",         tagall },
+	{ "tagex",          tagex },
+	{ "toggletag",      tag },
+	{ "toggletagex",    toggletagex },
+	{ "killclient",     killclient },
+	{ "quit",           quit },
+	{ "setlayout",      setlayout },
+	{ "setlayoutex",    setlayoutex },
+};
