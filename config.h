@@ -16,20 +16,21 @@ static const char *fonts[]          = {
    "WenQuanYi WenQuanYi Bitmap Song:style=Regular:pixelsize=13", 
 };
 static const char dmenufont[]       = "cozette:style=Medium:pixelsize=13";
-static const char col_gray[]        = "#a89984";
+static const char col_gray[]        = "#434846";
 static const char col_dark_gray[]   = "#928374";
 static const char col_gray1[]       = "#2E3440";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#4C566A";
-static const char col_bg[]          = "#282828";
+static const char col_bg[]          = "#2d302f";
 static const char col_orange[]      = "#d65d0e";
-static const char col_fg[]          = "#ebdbb2";
+static const char col_fg[]          = "#e0f0eF";
+static const char col_purple[]      = "#CCA4E3";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_fg, col_bg, col_bg },
-	[SchemeSel]  = { col_fg, col_dark_gray,  col_orange  },
+	/*               fg      bg        border   */
+	[SchemeNorm] = { col_fg, col_bg,   col_bg },
+	[SchemeSel]  = { col_fg, col_gray, col_purple  },
 };
 
 /* tagging */
