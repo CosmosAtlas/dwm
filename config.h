@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int gappx     = 4;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -16,15 +16,20 @@ static const char *fonts[]          = {
    "WenQuanYi WenQuanYi Bitmap Song:style=Regular:pixelsize=13", 
 };
 static const char dmenufont[]       = "cozette:style=Medium:pixelsize=13";
+static const char col_gray[]        = "#a89984";
+static const char col_dark_gray[]   = "#928374";
 static const char col_gray1[]       = "#2E3440";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#4C566A";
+static const char col_bg[]          = "#282828";
+static const char col_orange[]      = "#d65d0e";
+static const char col_fg[]          = "#ebdbb2";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_fg, col_bg, col_bg },
+	[SchemeSel]  = { col_fg, col_dark_gray,  col_orange  },
 };
 
 /* tagging */
