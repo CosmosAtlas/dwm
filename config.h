@@ -174,6 +174,7 @@ static Signal signals[] = {
 	{ "togglebar",      togglebar },
 	{ "incnmaster",     incnmaster },
 	{ "togglefloating", togglefloating },
+	{ "togglefullscr",  togglefullscr },
 	{ "focusmon",       focusmon },
 	{ "tagmon",         tagmon },
 	{ "zoom",           zoom },
