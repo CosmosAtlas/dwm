@@ -96,7 +96,7 @@ static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", NULL};
 static Key keys[] = {
 	/* modifier             key    function        argument */
 	/* { MODKEY,               65,    spawn,          {.v = dmenucmd } },      // Space */
-	{ MODKEY,               49,    togglescratch,  {.v = scratchpadcmd } },    // grave
+	{ MODKEY,               202,    togglescratch,  {.v = scratchpadcmd } },    // F24, basically nothing just to put something here to make it none empty
 };
 
 /* button definitions */
