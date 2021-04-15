@@ -11,8 +11,8 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
+   "Cozette:pixelsize=13",
    "Wuncon Siji:style=Regular",
-   "curie:style=Medium:pixelsize=13",
    "Zpix:style=Regular:pixelsize=12", 
 };
 static const char dmenufont[]       = "cozette:style=Medium:pixelsize=13";
@@ -44,7 +44,6 @@ static const Rule rules[] = {
     /* class      instance    title       tags mask     iscentered   isfloating   monitor  scratch key*/
 	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1,      0   },
 	{ "mpv",      NULL,       NULL,       0,            0,           1,           -1,      0   },
-	{ "Firefox",  NULL,       NULL,       0,            0,           0,           -1,      0   },
 	{ NULL,       NULL,   "scratchpad",   0,            1,           1,           -1,      's' },
 };
 
@@ -62,11 +61,11 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[D]",    deck },  // t, f, t, u, m, g
-	{ "",      NULL },    /* no layout function means floating behavior */
-	{ "",      tile },
-	{ "",      bstackhoriz },
+	{ "[F]",      NULL },    /* no layout function means floating behavior */
+	{ "[]=",      tile },
+	{ "目",      bstackhoriz },
     { "|||",      tcl },
-	{ "HHH",      grid },
+	{ "田",      grid },
 	/* { "",      nrowgrid }, */
 	/* { "",      monocle }, */
 	/* { "",      spiral }, */ 
