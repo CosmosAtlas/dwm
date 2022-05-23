@@ -11,9 +11,9 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
-   "Cozette:pixelsize=13",
-   "Wuncon Siji:style=Regular",
-   "Zpix:style=Regular:pixelsize=12", 
+  "Dina:pixelsize=13",
+  "JoyPixels:pixelsize=13:antialias=true:autohint=true",
+  "WenQuanYi WenQuanYi Bitmap Song:style=Regular:pixelsize=13", 
 };
 static const char dmenufont[]       = "cozette:style=Medium:pixelsize=13";
 static const char col_gray[]        = "#434846";
@@ -43,6 +43,7 @@ static const Rule rules[] = {
 	 */
     /* class      instance    title       tags mask     iscentered   isfloating   monitor  scratch key*/
 	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1,      0   },
+	{ "Firefox",  NULL,       NULL,       0,            0,           0,           -1,      0   },
 	{ "mpv",      NULL,       NULL,       0,            0,           1,           -1,      0   },
 	{ NULL,       NULL,   "scratchpad",   0,            1,           1,           -1,      's' },
 };
@@ -51,6 +52,7 @@ static const Rule rules[] = {
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #include "fibonacci.c"
 #include "tcl.c"
